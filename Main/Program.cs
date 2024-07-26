@@ -1,10 +1,19 @@
 ﻿using Memento;
+using StatePattern;
 
 namespace Main
 {
     internal class Program
     {
         static void Main(string[] args)
+        {
+
+
+            RunStatePattern();
+
+        }
+
+        private static void RunMemento()
         {
             Editor editor = new Editor();
 
@@ -18,7 +27,7 @@ namespace Main
             history.Push(editor.CreateState());
 
             editor.SetContent("c");
-           
+
 
             Console.WriteLine(editor.GetContent());
 
@@ -26,6 +35,15 @@ namespace Main
 
             Console.WriteLine(editor.GetContent());
 
+        }
+
+        private static void RunStatePattern()
+        {
+            DirectionService service = new DirectionService();
+
+            service.SetTravelMode(new Bicycling());
+
+            service.GetDirection();
         }
     }
 }
